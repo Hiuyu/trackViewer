@@ -1,4 +1,4 @@
-Package: trackViewer
+Package: trackViewerXYZ
 Type: Package
 Title: A R/Bioconductor package with web interface for drawing elegant interactive tracks or lollipop plot to facilitate integrated analysis of multi-omics data
 Version: 1.31.2
