@@ -171,6 +171,31 @@ plotLollipops <- function(SNPs, feature.height, bottomHeight, baseline,
                                        yscale=c(scoreMax0+.5, 0)))
             }
         }
+        if(yaxis && scoreMax>1 && type %in% c("pie")){
+          if(side=="top"){
+            grid.yaxis(at=yaxisat,
+                       label=yaxisLabel,
+                       main = main,
+                       gp=yaxis.gp,
+                       vp=viewport(x=.5+ifelse(main, -1, 1) *LINEW,
+                                   y=feature.height+5.25*GAP*cex+
+                                     scoreMax*LINEW*ratio.yx/2*cex,
+                                   width=1,
+                                   height=scoreMax*LINEW*ratio.yx*cex,
+                                   yscale=c(0, scoreMax0+.5)))
+          }else{
+            grid.yaxis(at=yaxisat,
+                       label=yaxisLabel,
+                       main = main,
+                       gp=yaxis.gp,
+                       vp=viewport(x=.5+ifelse(main, -1, 1) *LINEW,
+                                   y=1-(feature.height+5.25*GAP*cex+
+                                          scoreMax*LINEW*ratio.yx/2*cex),
+                                   width=1,
+                                   height=scoreMax*LINEW*ratio.yx*cex,
+                                   yscale=c(scoreMax0+.5, 0)))
+          }
+        }
         if(length(SNPs$alpha)==length(SNPs)){
           SNPs$alpha[is.na(SNPs$alpha)] <- 0
           if(all(is.numeric(SNPs$alpha))){

@@ -106,7 +106,10 @@ grid.lollipop <- function (x1=.5, y1=.5,
                            gp=gpar(col=dashline.col, lty=3, lwd=lwd))
             }
         }else{
-            y0 <- c(y1, y2, y2+y3, y2+y3+y4)
+          #----#zxy
+            this.score <- if(length(percent$score)>0) max(percent$score, 1) else 1
+            y0 <- c(y1, y2, y2+y3, y2+y3+y4+(this.score-1)*2*radius*ratio.yx+(1-cex)*radius*ratio.yx)
+            #---#
             if(side) y0 <- 1 - y0
             grid.lines(x=c(x1, x1, x2, x2), y=y0, 
                        gp=gpar(col=border, lwd=lwd))
@@ -184,7 +187,7 @@ grid.lollipop <- function (x1=.5, y1=.5,
                }
                },
            pie={
-               y0 <- y2+y3+y4+radius*ratio.yx
+               y0 <- y2+y3+y4+(this.score-.5)*2*radius*ratio.yx
                if(side) y0 <- 1 - y0
                grid.pie(x=x2, y=y0, 
                         radius = radius*cex, 
